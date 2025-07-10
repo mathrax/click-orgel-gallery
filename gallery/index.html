@@ -1,15 +1,29 @@
-<script>
-  function setup() {
-    noCanvas();
-    const params = new URLSearchParams(window.location.search);
-    const imgUrl = params.get('image');
-    if (imgUrl) {
-      const decoded = decodeURIComponent(imgUrl);
-      const img = createImg(decoded, 'uploaded');
-      img.size(400, 0);
-      img.parent(document.body);
-    } else {
-      createP('画像が指定されていません').parent(document.body);
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>クリックで奏でるオルゴール - ギャラリー</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+</head>
+<body>
+  <h1>クリックで奏でるオルゴール</h1>
+  <div id="image-container"></div>
+
+  <script>
+    function setup() {
+      noCanvas();
+      const params = new URLSearchParams(window.location.search);
+      const imgUrl = params.get('image');
+      if (imgUrl) {
+        const decodedUrl = decodeURIComponent(imgUrl);
+        const img = createImg(decodedUrl, 'アップロード画像');
+        img.parent('image-container');
+        img.size(400, 0);
+      } else {
+        const p = createP('画像URLが指定されていません');
+        p.parent('image-container');
+      }
     }
-  }
-</script>
+  </script>
+</body>
+</html>
