@@ -1,0 +1,15 @@
+<script>
+  function setup() {
+    noCanvas();
+    const params = new URLSearchParams(window.location.search);
+    const imgUrl = params.get('image');
+    if (imgUrl) {
+      const decoded = decodeURIComponent(imgUrl);
+      const img = createImg(decoded, 'uploaded');
+      img.size(400, 0);
+      img.parent(document.body);
+    } else {
+      createP('画像が指定されていません').parent(document.body);
+    }
+  }
+</script>
