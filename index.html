@@ -10,13 +10,15 @@
   <div id="image-container"></div>
 
   <script>
+    let img;
+
     function setup() {
       noCanvas();
       const params = new URLSearchParams(window.location.search);
       const imgUrl = params.get('image');
       if (imgUrl) {
         const decodedUrl = decodeURIComponent(imgUrl);
-        const img = createImg(decodedUrl, 'アップロード画像');
+        img = createImg(decodedUrl, 'アップロード画像');
         img.parent('image-container');
         img.size(400, 0);
       } else {
